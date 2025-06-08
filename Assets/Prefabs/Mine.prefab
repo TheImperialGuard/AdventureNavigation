@@ -47,9 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a69af763179664795056eb14d5d814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRadius: 2
-  _explosionEffectPrefab: {fileID: 2271414083678743546, guid: f01beea62ba335e42909c2e7d14243a5,
-    type: 3}
+  _explosionRadius: 3
+  _timeBeforeExplose: 3
   <Damage>k__BackingField: 25
 --- !u!54 &6249984137090531001
 Rigidbody:
@@ -160,7 +159,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9ddf0b7f22fbe77449406caf4928b435,
         type: 3}
       propertyPath: m_Name
-      value: smokebomb
+      value: View
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ddf0b7f22fbe77449406caf4928b435,
         type: 3}
@@ -170,8 +169,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ddf0b7f22fbe77449406caf4928b435,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5190047057767767329}
   m_SourcePrefab: {fileID: 100100000, guid: 9ddf0b7f22fbe77449406caf4928b435, type: 3}
+--- !u!1 &5839604524045794826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ddf0b7f22fbe77449406caf4928b435,
+    type: 3}
+  m_PrefabInstance: {fileID: 6758522818055258971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5190047057767767329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5839604524045794826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491dc56fd93d1614a951bc57bc469a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionEffectPrefab: {fileID: 2271414083678743546, guid: f01beea62ba335e42909c2e7d14243a5,
+    type: 3}
+  _explosionSoundClip: {fileID: 8300000, guid: 340450a2a900a0540bd7c24eb32aed42, type: 3}
+  _explosionSound: {fileID: 7143530215867989018, guid: b7d41f3903b232540b0b8a52f742fe1b,
+    type: 3}
 --- !u!4 &6503657237099259056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ddf0b7f22fbe77449406caf4928b435,

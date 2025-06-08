@@ -1,25 +1,55 @@
+using System.Collections;
 using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
     [SerializeField] private float _explosionRadius;
-
-    [SerializeField] private ParticleSystem _explosionEffectPrefab;
+    [SerializeField] private float _timeBeforeExplose;
 
     private SphereCollider _collider;
 
+    private Coroutine _explodeProcess;
+
+    private IExploseReaction _explodeReaction;
+
     [field: SerializeField] public int Damage { get; private set; }
+
+    public bool IsExplosing => _explodeProcess != null;
 
     private void Awake()
     {
         _collider = GetComponent<SphereCollider>();
 
         _collider.radius = _explosionRadius;
+
+        _explodeReaction = GetComponentInChildren<IExploseReaction>();
     }
 
-    public void Explose()
+    public void StartExploseProcess()
     {
-        Instantiate(_explosionEffectPrefab, transform.position, Quaternion.identity);
+        StartCoroutine(ExplodeProcess());
+    }
+
+    private IEnumerator ExplodeProcess()
+    {
+        yield return new WaitForSeconds(_timeBeforeExplose);
+
+        Explode();
+    }
+
+    private void Explode()
+    {
+        Collider[] targets = Physics.OverlapSphere(transform.position, _explosionRadius);
+
+        foreach (Collider target in targets)
+        {
+            IDamagable damagable = target.GetComponent<IDamagable>();
+
+            if (damagable != null)
+                damagable.TakeDamage(Damage);
+        }
+
+        _explodeReaction.ExplosionReact();
 
         Destroy(gameObject);
     }
