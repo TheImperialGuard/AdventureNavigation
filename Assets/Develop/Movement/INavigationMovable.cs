@@ -5,6 +5,8 @@ public interface INavigationMovable : IMovable
 {
     bool CanMove { get; }
 
+    bool IsJumping { get; }
+
     bool IsOnNavMeshLink(out OffMeshLinkData offMeshLinkData);
 
     void SetDestination(Vector3 position);
